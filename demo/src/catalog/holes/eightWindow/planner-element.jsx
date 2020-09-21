@@ -83,10 +83,11 @@ export default {
     let holeStyle = element.selected ? STYLE_HOLE_SELECTED : STYLE_HOLE_BASE;
     let holeStyle2 = element.selected ? STYLE_HOLE_SELECTED : STYLE_HOLE_BASE2;
     let length = element.properties.get('width').get('length');
-
+    console.log('holeWidth', holeWidth)
     let scaleX, scaleY;
     let scaleX2, scaleY2;
     let pX1, pX2;
+    let ppX1, ppX2;
 
     flip ? flip = 'yes' : flip = 'none';
     handleSide ? handleSide = 'right' : handleSide = 'left';
@@ -101,10 +102,13 @@ export default {
 
       }
       else {
-        pX1 = 20;
-        pX2 = holeWidth - 20;
+        pX1 = 10;
+        pX2 = (holeWidth / 2) - 5;
+        // sec bar
+        ppX1 = (holeWidth / 2) + 5;
+        ppX2 = holeWidth - 10;
         scaleY = -1;
-        console.log('first if else part')
+        console.log('first if else part hhhhhhhh.......')
 
       }
     }
@@ -117,9 +121,14 @@ export default {
         console.log('else right ')
       }
       else {
-        pX1 = 20;
-        pX2 = holeWidth - 20;
+        pX1 = 10;
+        pX2 = (holeWidth / 2) - 5;
+        // sec bar
+        ppX1 = (holeWidth / 2) + 5;
+        ppX2 = holeWidth - 10;
         scaleY = 1;
+        console.log('pX2 else else ', pX2)
+
         console.log('else else ')
       }
 
@@ -130,9 +139,11 @@ export default {
           transform={`scale(${scaleX},${scaleY})`} />
         <line key='2' x1={pX1} y1={- epsilon} x2={pX2} y2={- epsilon} style={STYLE_HOLE_BASE_mid}
           transform={`scale(${scaleX},${scaleY})`} />
-        <line key='3' x1={holeWidth} y1={0 - epsilon} x2={holeWidth} y2={15 + epsilon} style={holeStyle2}
+        <line key='3' x1={ppX1} y1={- epsilon} x2={ppX2} y2={- epsilon} style={STYLE_HOLE_BASE_mid}
           transform={`scale(${scaleX},${scaleY})`} />
-        <line key='4' x1='0' y1={0 - epsilon} x2='0' y2={15 + epsilon} style={holeStyle2}
+        <line key='4' x1={holeWidth} y1={0 - epsilon} x2={holeWidth} y2={15 + epsilon} style={holeStyle2}
+          transform={`scale(${scaleX},${scaleY})`} />
+        <line key='5' x1='0' y1={0 - epsilon} x2='0' y2={15 + epsilon} style={holeStyle2}
           transform={`scale(${scaleX},${scaleY})`} />
       </g>
     )

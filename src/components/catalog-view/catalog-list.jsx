@@ -87,6 +87,7 @@ export default class CatalogList extends Component {
     let elementsToDisplay = currentCategory.elements.filter((element) =>
       element.info.visibility ? element.info.visibility.catalog : true
     );
+    console.log('categoriesToDisplay', categoriesToDisplay)
 
     this.state = {
       categories: currentCategory.categories,
@@ -182,7 +183,7 @@ export default class CatalogList extends Component {
           key={pathSize}
           page={
             this.context.catalog.categories[
-              this.props.state.catalog.path.get(pathSize - 1)
+            this.props.state.catalog.path.get(pathSize - 1)
             ]
           }
         />

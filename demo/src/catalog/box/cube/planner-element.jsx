@@ -56,7 +56,7 @@ export default {
     let d = element.properties.getIn(['depth', 'length']);
     let w2 = w / 2;
     let d2 = d / 2;
-
+    console.log('ljsjjjj')
     return (
       <g transform={`translate(-${w2}, -${d2})`}>
         <rect x="0" y="0" width={w} height={d} style={style} />

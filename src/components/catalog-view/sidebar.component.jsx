@@ -16,9 +16,12 @@ export default class Sidebar extends Component {
       if (prevState.active == menu) menu = "";
       return {
         active: menu,
+
       };
     });
+
     // return this.setState({ active: menu });
+
   }
 
   handleActiveMenu(menu) {
@@ -30,7 +33,7 @@ export default class Sidebar extends Component {
 
     // console.log("list", list);
     return (
-      <nav id="tool-menu">
+      <nav id="tool-menu" >
         <ul className="parent-menu">
           {list.map((category) => {
             return (
