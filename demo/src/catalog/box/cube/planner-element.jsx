@@ -4,15 +4,17 @@ import { ReactPlannerSharedStyle } from 'react-planner';
 
 
 export default {
-  name: 'cube',
+  name: 'box',
   prototype: 'items',
 
   info: {
-    title: 'cube',
-    tag: ['demo'],
+    title: 'box',
+    tag: ['box'],
     description: 'Demo item',
     image: require('./cube.png')
   },
+
+
 
   properties: {
     color: {

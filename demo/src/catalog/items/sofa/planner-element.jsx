@@ -33,9 +33,9 @@ export default {
     let textRotation = Math.sin((angle * Math.PI) / 180) < 0 ? 180 : 0;
 
     let style = {
-      stroke: element.selected ? "#0096fd" : "#000",
+      stroke: element.selected ? "#0096fd" : "none",
       strokeWidth: "2px",
-      fill: "#84e1ce",
+      fill: "none",
     };
     let arrow_style = {
       stroke: element.selected ? "#0096fd" : null,
@@ -45,6 +45,8 @@ export default {
 
     return (
       <g transform={`translate(${-width.length / 2},${-depth.length / 2})`}>
+
+
         <rect
           x="0"
           y="0"
@@ -52,7 +54,11 @@ export default {
           height={depth.length}
           style={style}
         />
-        <line
+
+        <image href="catalog/items/sofa/sofa.png" width={width.length}
+          height={depth.length}
+          style={style} ></image>
+        {/* <line
           x1={width.length / 2}
           x2={width.length / 2}
           y1={depth.length}
@@ -72,17 +78,16 @@ export default {
           y1={1.5 * depth.length}
           y2={1.2 * depth.length}
           style={arrow_style}
-        />
-        <text
+        /> */}
+        {/* <text
           x="0"
           y="0"
-          transform={`translate(${width.length / 2}, ${
-            depth.length / 2
-          }) scale(1,-1) rotate(${textRotation})`}
+          transform={`translate(${width.length / 2}, ${depth.length / 2
+            }) scale(1,-1) rotate(${textRotation})`}
           style={{ textAnchor: "middle", fontSize: "11px" }}
         >
           {element.type}
-        </text>
+        </text> */}
       </g>
     );
   },

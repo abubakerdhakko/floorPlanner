@@ -53,7 +53,7 @@ export default {
     };
 
     let w = element.properties.getIn(['width', 'length']);
-    let d = element.properties.getIn(['depth', 'length']);
+    let d = element.properties.getIn(['height', 'length']);
     let w2 = w / 2;
     let d2 = d / 2;
 
@@ -61,6 +61,11 @@ export default {
       <g transform={`translate(-${w2}, -${d2})`}>
         <rect x="0" y="0" width={w} height={d} style={style} />
       </g>
+
+      // <g xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg" transform={`translate(-${w2}, -${d2})`} >
+      //   <image width={w} height={d} href="catalog\items\cube\8.png" ></image>
+      // </g >
+
     );
   },
 

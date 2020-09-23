@@ -338,12 +338,12 @@ export default {
       textRotation = 180;
     }
 
-    let rect_style = { stroke: element.selected ? '#0096fd' : '#000', strokeWidth: "2px", fill: "#84e1ce" };
+    let rect_style = { stroke: element.selected ? '#0096fd' : 'none', strokeWidth: "2px", fill: "none" };
 
 
     return (
       <g transform={`translate(${-newWidth / 2},${-newDepth / 2})`}>
-        {/* <rect key="1" x="0" y="0" width={newWidth} height={newDepth} style={rect_style} /> */}
+        <rect key="1" x="0" y="0" width={newWidth} height={newDepth} style={rect_style} />
         <image width={newWidth} height={newDepth} href="catalog/items/sink/sink.png" ></image>
 
         {/* <text key="2" x="0" y="0"

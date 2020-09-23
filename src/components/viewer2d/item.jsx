@@ -19,6 +19,7 @@ const STYLE_CIRCLE2 = {
   cursor: "ew-resize"
 };
 
+
 export default function Item({ layer, item, scene, catalog }) {
 
   let { x, y, rotation } = item;
@@ -26,6 +27,7 @@ export default function Item({ layer, item, scene, catalog }) {
   let renderedItem = catalog.getElement(item.type).render2D(item, layer, scene);
 
   return (
+
 
     <g
       data-element-root
@@ -35,10 +37,9 @@ export default function Item({ layer, item, scene, catalog }) {
       data-layer={layer.id}
       style={item.selected ? { cursor: "move" } : {}}
       transform={`translate(${x},${y}) rotate(${rotation})`}>
-
       {renderedItem}
-      <If condition={item.selected}>
 
+      <If condition={item.selected}>
         <g data-element-root
           data-prototype={item.prototype}
           data-id={item.id}
@@ -50,7 +51,8 @@ export default function Item({ layer, item, scene, catalog }) {
           <circle cx="0" cy="0" r="150" style={STYLE_CIRCLE2} />
         </g>
       </If>
-    </g>
+    </g >
+
   )
 }
 

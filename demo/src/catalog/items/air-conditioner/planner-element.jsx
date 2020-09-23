@@ -1,8 +1,6 @@
 import * as Three from "three";
 import React from "react";
 
-
-
 const WIDTH = 90;
 const DEPTH = 40;
 const HEIGHT = 30;
@@ -313,7 +311,36 @@ export default {
       },
     },
   },
+  getInitialState: function () {
+    return {
+      size: 60
+    };
+  },
 
+  componentDidMount: function () {
+    this.clientY = 0;
+  },
+
+  handleMouseDown: function (event) {
+    document.addEventListener('mousemove', this.updateSize);
+    document.addEventListener('mouseup', this.handleMouseUp);
+    this.clientY = event.clientY;
+    console.log('ac')
+  },
+
+  handleMouseUp: function (event) {
+    document.removeEventListener('mousemove', this.updateSize);
+    document.removeEventListener(event.type, this.handleMouseUp);
+  },
+
+  updateSize: function (event) {
+    var delta = event.clientY - this.clientY;
+    this.clientY = event.clientY;
+
+    this.setState({
+      size: _.clamp(this.state.size + delta, 60, 500)
+    })
+  },
   render2D: function (element, layer, scene) {
     let angle = element.rotation + 90;
 
@@ -324,19 +351,20 @@ export default {
 
     return (
       <g transform={`translate(${-WIDTH / 2},${-DEPTH / 2})`}>
-        {/* <rect
+        <rect
+          className="icon" onMouseDown={this.handleMouseDown}
           key="1"
           x="0"
           y="0"
           width={WIDTH}
           height={DEPTH}
           style={{
-            stroke: element.selected ? "#0096fd" : "#000",
+            stroke: element.selected ? "#0096fd" : "none",
             strokeWidth: "2px",
-            fill: "#84e1ce",
+            fill: "none",
           }}
         />
-        <text
+        {/*<text
           key="2"
           x="0"
           y="0"
