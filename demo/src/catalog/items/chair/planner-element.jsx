@@ -8,61 +8,61 @@ const HEIGHT = 50;
 const objectMaxLOD = makeObjectMaxLOD();
 const objectMinLOD = makeObjectMinLOD();
 
-function makeObjectMaxLOD(){
+function makeObjectMaxLOD() {
 
   let chair = new Three.Mesh();
 
-  let LegGeometry = new Three.CylinderGeometry( 0.02, 0.02, 0.5, 32, 32 );
-  let LegMaterial = new Three.MeshLambertMaterial( {color: 0xd9d7d7} );
+  let LegGeometry = new Three.CylinderGeometry(0.02, 0.02, 0.5, 32, 32);
+  let LegMaterial = new Three.MeshLambertMaterial({ color: 0xd9d7d7 });
 
-  let leg1 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg1.rotation.x += Math.PI/2;
-  leg1.position.z += 0.5/2;
+  let leg1 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg1.rotation.x += Math.PI / 2;
+  leg1.position.z += 0.5 / 2;
 
-  let leg2 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg2.rotation.x += Math.PI/2;
-  leg2.position.z += 0.5/2;
+  let leg2 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg2.rotation.x += Math.PI / 2;
+  leg2.position.z += 0.5 / 2;
   leg2.position.y += 0.4;
 
-  let leg3 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg3.rotation.x += Math.PI/2;
-  leg3.position.z += 0.5/2;
+  let leg3 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg3.rotation.x += Math.PI / 2;
+  leg3.position.z += 0.5 / 2;
   leg3.position.x += 0.4;
 
-  let leg4 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg4.rotation.x += Math.PI/2;
-  leg4.position.z += 0.5/2;
+  let leg4 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg4.rotation.x += Math.PI / 2;
+  leg4.position.z += 0.5 / 2;
   leg4.position.y += 0.4;
   leg4.position.x += 0.4;
 
-  let leg5 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg5.rotation.x += Math.PI/2;
-  leg5.position.z += 0.5*3/2;
+  let leg5 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg5.rotation.x += Math.PI / 2;
+  leg5.position.z += 0.5 * 3 / 2;
 
-  let leg6 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg6.rotation.x += Math.PI/2;
-  leg6.position.z += 0.5*3/2;
+  let leg6 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg6.rotation.x += Math.PI / 2;
+  leg6.position.z += 0.5 * 3 / 2;
   leg6.position.x += 0.4;
 
-  let WoodMaterial = new Three.MeshLambertMaterial( {color: 0x9b8c75} );
+  let WoodMaterial = new Three.MeshLambertMaterial({ color: 0x9b8c75 });
 
   let roundedRectShape = new Three.Shape();
 
-  let x=0;
-  let y=0;
-  let width=.5;
-  let height=.48;
-  let radius=0.05;
+  let x = 0;
+  let y = 0;
+  let width = .5;
+  let height = .48;
+  let radius = 0.05;
 
-  roundedRectShape.moveTo( x, y + radius );
-  roundedRectShape.lineTo( x, y + height - radius );
-  roundedRectShape.quadraticCurveTo( x, y + height, x + radius, y + height );
-  roundedRectShape.lineTo( x + width - radius, y + height) ;
-  roundedRectShape.quadraticCurveTo( x + width, y + height, x + width, y + height - radius );
-  roundedRectShape.lineTo( x + width, y + radius );
-  roundedRectShape.quadraticCurveTo( x + width, y, x + width - radius, y );
-  roundedRectShape.lineTo( x + radius, y );
-  roundedRectShape.quadraticCurveTo( x, y, x, y + radius );
+  roundedRectShape.moveTo(x, y + radius);
+  roundedRectShape.lineTo(x, y + height - radius);
+  roundedRectShape.quadraticCurveTo(x, y + height, x + radius, y + height);
+  roundedRectShape.lineTo(x + width - radius, y + height);
+  roundedRectShape.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+  roundedRectShape.lineTo(x + width, y + radius);
+  roundedRectShape.quadraticCurveTo(x + width, y, x + width - radius, y);
+  roundedRectShape.lineTo(x + radius, y);
+  roundedRectShape.quadraticCurveTo(x, y, x, y + radius);
 
   let extrudeSettings = {
     steps: 2,
@@ -73,8 +73,8 @@ function makeObjectMaxLOD(){
     bevelSegments: 1
   };
 
-  let PlaneGeometry = new Three.ExtrudeGeometry( roundedRectShape, extrudeSettings );
-  let plane = new Three.Mesh( PlaneGeometry, WoodMaterial ) ;
+  let PlaneGeometry = new Three.ExtrudeGeometry(roundedRectShape, extrudeSettings);
+  let plane = new Three.Mesh(PlaneGeometry, WoodMaterial);
 
   plane.position.x += -0.05;
   plane.position.y += -0.04;
@@ -82,21 +82,21 @@ function makeObjectMaxLOD(){
 
   let roundedRectShape2 = new Three.Shape();
 
-  let x1=0;
-  let y1=0;
-  let width1=.45;
-  let height1=.25;
-  let radius1=0.05;
+  let x1 = 0;
+  let y1 = 0;
+  let width1 = .45;
+  let height1 = .25;
+  let radius1 = 0.05;
 
-  roundedRectShape2.moveTo( x1, y1 + radius1 );
-  roundedRectShape2.lineTo( x1, y1 + height1 - radius1 );
-  roundedRectShape2.quadraticCurveTo( x1, y1 + height1, x1 + radius1, y1 + height1 );
-  roundedRectShape2.lineTo( x1 + width1 - radius1, y1 + height1) ;
-  roundedRectShape2.quadraticCurveTo( x1 + width1, y1 + height1, x1 + width1, y1 + height1 - radius1 );
-  roundedRectShape2.lineTo( x1 + width1, y1 + radius1 );
-  roundedRectShape2.quadraticCurveTo( x1 + width1, y1, x1 + width1 - radius1, y1 );
-  roundedRectShape2.lineTo( x1 + radius1, y1 );
-  roundedRectShape2.quadraticCurveTo( x1, y1, x1, y1 + radius1 );
+  roundedRectShape2.moveTo(x1, y1 + radius1);
+  roundedRectShape2.lineTo(x1, y1 + height1 - radius1);
+  roundedRectShape2.quadraticCurveTo(x1, y1 + height1, x1 + radius1, y1 + height1);
+  roundedRectShape2.lineTo(x1 + width1 - radius1, y1 + height1);
+  roundedRectShape2.quadraticCurveTo(x1 + width1, y1 + height1, x1 + width1, y1 + height1 - radius1);
+  roundedRectShape2.lineTo(x1 + width1, y1 + radius1);
+  roundedRectShape2.quadraticCurveTo(x1 + width1, y1, x1 + width1 - radius1, y1);
+  roundedRectShape2.lineTo(x1 + radius1, y1);
+  roundedRectShape2.quadraticCurveTo(x1, y1, x1, y1 + radius1);
 
   let extrudeSettings2 = {
     steps: 2,
@@ -107,10 +107,10 @@ function makeObjectMaxLOD(){
     bevelSegments: 1
   };
 
-  let backGeometry = new Three.ExtrudeGeometry( roundedRectShape2, extrudeSettings2 );
-  let back = new Three.Mesh( backGeometry, WoodMaterial ) ;
-  back.rotation.x += Math.PI/2;
-  back.position.z += 0.5*12/8;
+  let backGeometry = new Three.ExtrudeGeometry(roundedRectShape2, extrudeSettings2);
+  let back = new Three.Mesh(backGeometry, WoodMaterial);
+  back.rotation.x += Math.PI / 2;
+  back.position.z += 0.5 * 12 / 8;
   back.position.y += 0.03;
   back.position.x += -0.025;
 
@@ -126,60 +126,60 @@ function makeObjectMaxLOD(){
   return chair
 }
 
-function makeObjectMinLOD(){
+function makeObjectMinLOD() {
   let chair = new Three.Mesh();
 
-  let LegGeometry = new Three.CylinderGeometry( 0.02, 0.02, 0.5, 8, 8 );
-  let LegMaterial = new Three.MeshLambertMaterial( {color: 0xd9d7d7} );
+  let LegGeometry = new Three.CylinderGeometry(0.02, 0.02, 0.5, 8, 8);
+  let LegMaterial = new Three.MeshLambertMaterial({ color: 0xd9d7d7 });
 
-  let leg1 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg1.rotation.x += Math.PI/2;
-  leg1.position.z += 0.5/2;
+  let leg1 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg1.rotation.x += Math.PI / 2;
+  leg1.position.z += 0.5 / 2;
 
-  let leg2 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg2.rotation.x += Math.PI/2;
-  leg2.position.z += 0.5/2;
+  let leg2 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg2.rotation.x += Math.PI / 2;
+  leg2.position.z += 0.5 / 2;
   leg2.position.y += 0.4;
 
-  let leg3 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg3.rotation.x += Math.PI/2;
-  leg3.position.z += 0.5/2;
+  let leg3 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg3.rotation.x += Math.PI / 2;
+  leg3.position.z += 0.5 / 2;
   leg3.position.x += 0.4;
 
-  let leg4 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg4.rotation.x += Math.PI/2;
-  leg4.position.z += 0.5/2;
+  let leg4 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg4.rotation.x += Math.PI / 2;
+  leg4.position.z += 0.5 / 2;
   leg4.position.y += 0.4;
   leg4.position.x += 0.4;
 
-  let leg5 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg5.rotation.x += Math.PI/2;
-  leg5.position.z += 0.5*3/2;
+  let leg5 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg5.rotation.x += Math.PI / 2;
+  leg5.position.z += 0.5 * 3 / 2;
 
-  let leg6 = new Three.Mesh( LegGeometry, LegMaterial );
-  leg6.rotation.x += Math.PI/2;
-  leg6.position.z += 0.5*3/2;
+  let leg6 = new Three.Mesh(LegGeometry, LegMaterial);
+  leg6.rotation.x += Math.PI / 2;
+  leg6.position.z += 0.5 * 3 / 2;
   leg6.position.x += 0.4;
 
-  let WoodMaterial = new Three.MeshLambertMaterial( {color: 0x9b8c75} );
+  let WoodMaterial = new Three.MeshLambertMaterial({ color: 0x9b8c75 });
 
   let roundedRectShape = new Three.Shape();
 
-  let x=0;
-  let y=0;
-  let width=.5;
-  let height=.48;
-  let radius=0.025;
+  let x = 0;
+  let y = 0;
+  let width = .5;
+  let height = .48;
+  let radius = 0.025;
 
-  roundedRectShape.moveTo( x, y + radius );
-  roundedRectShape.lineTo( x, y + height - radius );
-  roundedRectShape.quadraticCurveTo( x, y + height, x + radius, y + height );
-  roundedRectShape.lineTo( x + width - radius, y + height) ;
-  roundedRectShape.quadraticCurveTo( x + width, y + height, x + width, y + height - radius );
-  roundedRectShape.lineTo( x + width, y + radius );
-  roundedRectShape.quadraticCurveTo( x + width, y, x + width - radius, y );
-  roundedRectShape.lineTo( x + radius, y );
-  roundedRectShape.quadraticCurveTo( x, y, x, y + radius );
+  roundedRectShape.moveTo(x, y + radius);
+  roundedRectShape.lineTo(x, y + height - radius);
+  roundedRectShape.quadraticCurveTo(x, y + height, x + radius, y + height);
+  roundedRectShape.lineTo(x + width - radius, y + height);
+  roundedRectShape.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+  roundedRectShape.lineTo(x + width, y + radius);
+  roundedRectShape.quadraticCurveTo(x + width, y, x + width - radius, y);
+  roundedRectShape.lineTo(x + radius, y);
+  roundedRectShape.quadraticCurveTo(x, y, x, y + radius);
 
   let extrudeSettings = {
     steps: 2,
@@ -190,8 +190,8 @@ function makeObjectMinLOD(){
     bevelSegments: 1
   };
 
-  let PlaneGeometry = new Three.ExtrudeGeometry( roundedRectShape, extrudeSettings );
-  let plane = new Three.Mesh( PlaneGeometry, WoodMaterial ) ;
+  let PlaneGeometry = new Three.ExtrudeGeometry(roundedRectShape, extrudeSettings);
+  let plane = new Three.Mesh(PlaneGeometry, WoodMaterial);
 
   plane.position.x += -0.05;
   plane.position.y += -0.04;
@@ -199,21 +199,21 @@ function makeObjectMinLOD(){
 
   let roundedRectShape2 = new Three.Shape();
 
-  let x1=0;
-  let y1=0;
-  let width1=.45;
-  let height1=.25;
-  let radius1=0.025;
+  let x1 = 0;
+  let y1 = 0;
+  let width1 = .45;
+  let height1 = .25;
+  let radius1 = 0.025;
 
-  roundedRectShape2.moveTo( x1, y1 + radius1 );
-  roundedRectShape2.lineTo( x1, y1 + height1 - radius1 );
-  roundedRectShape2.quadraticCurveTo( x1, y1 + height1, x1 + radius1, y1 + height1 );
-  roundedRectShape2.lineTo( x1 + width1 - radius1, y1 + height1) ;
-  roundedRectShape2.quadraticCurveTo( x1 + width1, y1 + height1, x1 + width1, y1 + height1 - radius1 );
-  roundedRectShape2.lineTo( x1 + width1, y1 + radius1 );
-  roundedRectShape2.quadraticCurveTo( x1 + width1, y1, x1 + width1 - radius1, y1 );
-  roundedRectShape2.lineTo( x1 + radius1, y1 );
-  roundedRectShape2.quadraticCurveTo( x1, y1, x1, y1 + radius1 );
+  roundedRectShape2.moveTo(x1, y1 + radius1);
+  roundedRectShape2.lineTo(x1, y1 + height1 - radius1);
+  roundedRectShape2.quadraticCurveTo(x1, y1 + height1, x1 + radius1, y1 + height1);
+  roundedRectShape2.lineTo(x1 + width1 - radius1, y1 + height1);
+  roundedRectShape2.quadraticCurveTo(x1 + width1, y1 + height1, x1 + width1, y1 + height1 - radius1);
+  roundedRectShape2.lineTo(x1 + width1, y1 + radius1);
+  roundedRectShape2.quadraticCurveTo(x1 + width1, y1, x1 + width1 - radius1, y1);
+  roundedRectShape2.lineTo(x1 + radius1, y1);
+  roundedRectShape2.quadraticCurveTo(x1, y1, x1, y1 + radius1);
 
   let extrudeSettings2 = {
     steps: 2,
@@ -224,10 +224,10 @@ function makeObjectMinLOD(){
     bevelSegments: 1
   };
 
-  let backGeometry = new Three.ExtrudeGeometry( roundedRectShape2, extrudeSettings2 );
-  let back = new Three.Mesh( backGeometry, WoodMaterial ) ;
-  back.rotation.x += Math.PI/2;
-  back.position.z += 0.5*12/8;
+  let backGeometry = new Three.ExtrudeGeometry(roundedRectShape2, extrudeSettings2);
+  let back = new Three.Mesh(backGeometry, WoodMaterial);
+  back.rotation.x += Math.PI / 2;
+  back.position.z += 0.5 * 12 / 8;
   back.position.y += 0.03;
   back.position.x += -0.025;
 
@@ -275,14 +275,18 @@ export default {
     }
 
     return (
-      <g transform={ `translate(${-WIDTH / 2},${-DEPTH / 2})`}>
-        <rect key="1" x="0" y="0" width={WIDTH} height={DEPTH}
-          style={{stroke: element.selected ? '#0096fd' : '#000', strokeWidth: "2px", fill: "#84e1ce"}}/>
-        <text key="2" x="0" y="0"
+      <g transform={`translate(${-WIDTH / 2},${-DEPTH / 2})`}>
+        {/* <rect key="1" x="0" y="0" width={WIDTH} height={DEPTH}
+          style={{ stroke: element.selected ? '#0096fd' : '#000', strokeWidth: "2px", fill: "#84e1ce" }} /> */}
+        {/* <text key="2" x="0" y="0"
           transform={ `translate(${WIDTH / 2}, ${DEPTH / 2}) scale(1,-1) rotate(${textRotation})`}
           style={ {textAnchor: "middle", fontSize: "11px"}}>
         {element.type}
-        </text>
+        </text> */}
+        {/* catalog/items/chair/chair.png */}
+        <image width={WIDTH} height={DEPTH}
+          style={{ stroke: element.selected ? '#0096fd' : '#000', strokeWidth: "2px", fill: "#84e1ce" }} href="catalog/items/chair/chair.png" ></image>
+
       </g>
     )
   },
@@ -303,21 +307,21 @@ export default {
     let deltaY = Math.abs(aa.max.y - aa.min.y);
     let deltaZ = Math.abs(aa.max.z - aa.min.z);
 
-    chair1.rotation.x+= -Math.PI/2;
-    chair1.position.y+= newAltitude;
-    chair1.position.x+= -WIDTH/3.5;
-    chair1.position.z+= DEPTH/4;
-    chair1.scale.set( 1.5*WIDTH / deltaZ,DEPTH/1.5 / deltaX, HEIGHT / deltaY);
+    chair1.rotation.x += -Math.PI / 2;
+    chair1.position.y += newAltitude;
+    chair1.position.x += -WIDTH / 3.5;
+    chair1.position.z += DEPTH / 4;
+    chair1.scale.set(1.5 * WIDTH / deltaZ, DEPTH / 1.5 / deltaX, HEIGHT / deltaY);
 
     /************** lod min *********************/
 
     let chair0 = new Three.Object3D();
     chair0.add(objectMinLOD.clone());
-    chair0.rotation.x+= -Math.PI/2;
-    chair0.position.y+= newAltitude;
-    chair0.position.x+= -WIDTH/3.5;
-    chair0.position.z+= DEPTH/4;
-    chair0.scale.set( 1.5*WIDTH / deltaZ,DEPTH/1.5 / deltaX, HEIGHT / deltaY);
+    chair0.rotation.x += -Math.PI / 2;
+    chair0.position.y += newAltitude;
+    chair0.position.x += -WIDTH / 3.5;
+    chair0.position.z += DEPTH / 4;
+    chair0.scale.set(1.5 * WIDTH / deltaZ, DEPTH / 1.5 / deltaX, HEIGHT / deltaY);
 
 
     /**** all level of detail ***/
@@ -338,6 +342,6 @@ export default {
     }
 
     return Promise.resolve(lod);
-    }
+  }
 
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { BoxGeometry, MeshBasicMaterial, Mesh, BoxHelper } from 'three';
 import { ReactPlannerSharedStyle } from 'react-planner';
 
+
 export default {
   name: 'cube',
   prototype: 'items',
@@ -57,10 +58,21 @@ export default {
     let w2 = w / 2;
     let d2 = d / 2;
     console.log('ljsjjjj')
+
+    // $('.directFilter').click(function (event) {
+    //   alert("I am an alert box!");
+    // });
+
     return (
-      <g transform={`translate(-${w2}, -${d2})`}>
-        <rect x="0" y="0" width={w} height={d} style={style} />
-      </g>
+
+      // <g transform={`translate(-${w2}, -${d2})`} >
+      //   <rect className="directFilter" x="0" y="0" width={w} height={d} style={style} />
+      // </g>
+      <g xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg" transform={`translate(-${w2}, -${d2})`} >
+        <image width={w} height={d} href="catalog/box/cube/cube.png" ></image>
+      </g >
+
+
     );
   },
 

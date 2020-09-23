@@ -139,11 +139,14 @@ export default {
 
     return (
       <g transform={`translate(${-WIDTH / 2},${-DEPTH / 2})`}>
-        <rect key='1' x='0' y='0' width={WIDTH} height={DEPTH} style={rect_style} />
+        {/* <rect key='1' x='0' y='0' width={WIDTH} height={DEPTH} style={rect_style} />
         <text key='2' x='0' y='0' transform={`translate(${WIDTH / 2}, ${DEPTH / 2}) scale(1,-1) rotate(${textRotation})`}
           style={{ textAnchor: 'middle', fontSize: '11px' }}>
           {element.type}
-        </text>
+        </text> */}
+        <image width={WIDTH} height={DEPTH} style={rect_style} href="catalog/items/bench/bench.png"
+          style={{ textAnchor: 'middle', fontSize: '11px' }}></image>
+
       </g>
     )
   },
