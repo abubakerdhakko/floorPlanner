@@ -34,6 +34,7 @@ const footerBarH = 20;
 const wrapperStyle = {
   display: "flex",
   flexFlow: "row nowrap",
+  position: "fixed"
 };
 
 class ReactPlanner extends Component {

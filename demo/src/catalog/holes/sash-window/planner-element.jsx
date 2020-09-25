@@ -56,13 +56,30 @@ export default {
     let epsilon = 3;
 
     let holeWidth = element.properties.get('width').get('length');
-    let holePath = `M${0} ${-epsilon}  L${holeWidth} ${-epsilon}  L${holeWidth} ${epsilon}  L${0} ${epsilon}  z`;
+    let holePath = `M${0} ${-epsilon * 2}  L${holeWidth} ${-epsilon * 2}  L${holeWidth} ${epsilon * 2}  L${0} ${epsilon * 2}  z`;
     let holeStyle = element.selected ? STYLE_HOLE_SELECTED : STYLE_HOLE_BASE;
     let length = element.properties.get('width').get('length');
     return (
       <g transform={`translate(${-length / 2}, 0)`}>
         <path key="1" d={holePath} style={holeStyle} />
-        <line key="2" x1={holeWidth / 2} y1={-10 - epsilon} x2={holeWidth / 2} y2={10 + epsilon} style={holeStyle} />
+        {/* <line key="2" x1={holeWidth / 2} y1={-10 - epsilon} x2={holeWidth / 2} y2={10 + epsilon} style={holeStyle} /> */}
+        <line
+          x1="2"
+          y1={epsilon}
+          x2={holeWidth}
+          y2={epsilon}
+          stroke="#fff"
+          strokeWidth="4"
+        />
+        <line
+          x1="3"
+          y1={-epsilon}
+          x2={holeWidth}
+          y2={-epsilon}
+          stroke="#fff"
+          strokeWidth="4"
+        />
+
       </g>
     );
   },

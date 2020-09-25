@@ -78,7 +78,7 @@ export default {
 
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24.716 8.694">
           <g id="Group_6" data-name="Group 6" transform="translate(-972.645 -533.396)">
-            <path id="Path_11" data-name="Path 11" d="M52,106.5l5.5,5.5h9.51l5.74-5.75L74.5,108l-6.94,6.34H56.91L50.5,108Z" transform="translate(922.5 427.5)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="0.5" />
+            <path id="Path_11" data-name="Path 11" d="M52,106.5l5.5,5.5h9.51l5.74-5.75L74.5,108l-6.94,6.34H56.91L50.5,108Z" transform="translate(922.5 427.5)" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="0.5" />
             <path id="Path_12" data-name="Path 12" d="M71.23,107.78l1.67,1.68L74.5,108l-1.75-1.75Z" transform="translate(922.5 427.5)" />
             <path id="Path_13" data-name="Path 13" d="M51.59,109.08l1.54-1.45L52,106.5,50.5,108Z" transform="translate(922.5 427.5)" />
           </g>
@@ -89,7 +89,7 @@ export default {
       return (
         <g xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24.716 8.694">
           <g id="Group_6" data-name="Group 6" transform="translate(-972.645 -533.396)">
-            <path id="Path_11" data-name="Path 11" d="M52,106.5l5.5,5.5h9.51l5.74-5.75L74.5,108l-6.94,6.34H56.91L50.5,108Z" transform="translate(922.5 427.5)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="0.5" />
+            <path id="Path_11" data-name="Path 11" d="M52,106.5l5.5,5.5h9.51l5.74-5.75L74.5,108l-6.94,6.34H56.91L50.5,108Z" transform="translate(922.5 427.5)" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="0.5" />
             <path id="Path_12" data-name="Path 12" d="M71.23,107.78l1.67,1.68L74.5,108l-1.75-1.75Z" transform="translate(922.5 427.5)" />
             <path id="Path_13" data-name="Path 13" d="M51.59,109.08l1.54-1.45L52,106.5,50.5,108Z" transform="translate(922.5 427.5)" />
           </g>

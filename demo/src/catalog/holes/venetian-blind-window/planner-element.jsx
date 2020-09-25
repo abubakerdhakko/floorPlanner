@@ -60,14 +60,15 @@ export default {
 
 
     let flip = element.properties.get('flip_horizontal');
-
-    const STYLE_HOLE_BASE = { stroke: '#000', strokeWidth: '3px', fill: '#000' };
-    const STYLE_HOLE_SELECTED = { stroke: '#0096fd', strokeWidth: '3px', fill: '#0096fd', cursor: 'move' };
+    const STYLE_HOLE_BASE = { stroke: "#000", strokeWidth: "3px", fill: "#000" };
+    const STYLE_HOLE_SELECTED = { stroke: "#0096fd", strokeWidth: "3px", fill: "#0096fd", cursor: "move" };
+    //let line = layer.lines.get(hole.line);
+    //let epsilon = line.properties.get('thickness') / 2;
 
     let epsilon = 3;
 
     let holeWidth = element.properties.get('width').get('length');
-    let holePath = `M${0} ${-epsilon}  L${holeWidth} ${-epsilon}  L${holeWidth} ${epsilon}  L${0} ${epsilon}  z`;
+    let holePath = `M${0} ${-epsilon * 2}  L${holeWidth} ${-epsilon * 2}  L${holeWidth} ${epsilon * 2}  L${0} ${epsilon * 2}  z`;
     let holeStyle = element.selected ? STYLE_HOLE_SELECTED : STYLE_HOLE_BASE;
     let length = element.properties.get('width').get('length');
 
@@ -94,24 +95,20 @@ export default {
         //     </g>
         //   </g>
         // </g>
-        <g
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.0"
-          width={holeWidth}
-          height={length}
-          viewBox="0 11 30.000000 8.000000"
-          transform={`translate(${-length / 2}, 0)`}
-        // preserveAspectRatio="xMidYMid meet"
-        >
-          <g
-            transform="translate(20,9.000000) scale(0.2,0.3) rotate(360)"
-            style={holeStyle}
-          >
-            <path d="M0 35 c0 -28 4 -35 19 -35 10 0 24 7 31 15 18 21 152 21 170 0 7 -8 21 -15 31 -15 15 0 19 7 19 35 l0 35 -135 0 -135 0 0 -35z m210 15 c0 -6 -32 -10 -75 -10 -43 0 -75 4 -75 10 0 6 32 10 75 10 43 0 75 -4 75 -10z" />
-          </g>
-        </g>
-        //
+        <g transform={`translate(${-length / 2}, 0)`}>
+          <path key="1" d={holePath} style={holeStyle} />
+          <line key="2" x1={0} y1={0} x2={0} y2={20 + epsilon} style={holeStyle} />
+          <line key="3" x1={holeWidth} y1={0} x2={holeWidth} y2={20 + epsilon} style={holeStyle} />
 
+          <line
+            x1="10"
+            y1={0}
+            x2={holeWidth - 10}
+            y2={0}
+            stroke="#fff"
+            strokeWidth="6"
+          />
+        </g>
       )
     }
     else {
@@ -141,21 +138,19 @@ export default {
         //     </g>
         //   </g>
         // </g>
-        <g
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.0"
-          width={holeWidth}
-          height={length}
-          viewBox="0 11 30.000000 8.000000"
-          transform={`translate(${-length / 2}, 0)`}
-        // preserveAspectRatio="xMidYMid meet"
-        >
-          <g
-            transform="translate(70,9.000000) scale(0.2,0.3) rotate(180)"
-            style={holeStyle}
-          >
-            <path d="M0 35 c0 -28 4 -35 19 -35 10 0 24 7 31 15 18 21 152 21 170 0 7 -8 21 -15 31 -15 15 0 19 7 19 35 l0 35 -135 0 -135 0 0 -35z m210 15 c0 -6 -32 -10 -75 -10 -43 0 -75 4 -75 10 0 6 32 10 75 10 43 0 75 -4 75 -10z" />
-          </g>
+        <g transform={`translate(${-length / 2}, 0)`}>
+          <path key="1" d={holePath} style={holeStyle} />
+          <line key="2" x1={0} y1={0} x2={0} y2={20 + epsilon} style={holeStyle} />
+          <line key="3" x1={holeWidth} y1={0} x2={holeWidth} y2={20 + epsilon} style={holeStyle} />
+
+          <line
+            x1="10"
+            y1={0}
+            x2={holeWidth - 10}
+            y2={0}
+            stroke="#fff"
+            strokeWidth="6"
+          />
         </g>
       )
     }

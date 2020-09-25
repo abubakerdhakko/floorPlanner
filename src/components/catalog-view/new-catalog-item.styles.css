@@ -23,10 +23,7 @@ ul.d-block {
 }
 ul.parent-menu li {
   padding: 5px;
-}
-ul.parent-menu li {
-  padding: 5px;
-  /* text-align: center; */
+  text-align: center;
 }
 ul.parent-menu {
   list-style-type: none;
@@ -37,7 +34,7 @@ ul.parent-menu {
   list-style-type: none;
   padding: 0 15px;
   max-height: 500px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 .react-draggable.react-draggable-dragged {
   z-index: 1;
