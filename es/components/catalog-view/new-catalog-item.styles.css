@@ -1,0 +1,118 @@
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+nav#tool-menu {
+  overflow-y: scroll;
+
+  min-width: 90px;
+}
+ul.d-block {
+  position: fixed;
+  top: 80px;
+  left: 60px;
+  list-style-type: none;
+  background: #eee;
+  padding: 5px  5px  25px  5px ;
+  border-radius: 5px;
+  box-shadow: 1px 0px 8px #888888;
+  z-index: 1;
+}
+ul.parent-menu li {
+
+  text-align: center;
+}
+ul.parent-menu {
+  list-style-type: none;
+
+  padding: 0 15px;
+}
+ul.parent-menu {
+  list-style-type: none;
+  padding: 0 10px;
+  max-height: 836px;
+  /* overflow-y: scroll; */
+}
+.react-draggable.react-draggable-dragged {
+  z-index: 1;
+  background-color: #ffffff;
+  /* max-height: 600px; */
+}
+.handle.handle-drag {
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 11px;
+}
+/* p,
+  ul,
+  li,
+  div,
+  nav {
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    font-family: Calibri;
+  }
+
+  #tool-menu {
+    overflow: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .parent-menu {
+    background-color: #0c8fff;
+    min-width: 60px;
+    float: left;
+  }
+
+  #tool-menu ul {
+    list-style-type: none;
+  }
+
+  #tool-menu ul li a {
+    padding: 5px 15px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  #tool-menu ul li a img {
+    width: 40px;
+  }
+
+  #tool-menu ul li a:hover {
+    background-color: #007ee9;
+  }
+
+
+  #tool-menu ul li:hover > ul {
+    left: 60px;
+    -webkit-transition: left 700ms ease-in;
+    -moz-transition: left 700ms ease-in;
+    -ms-transition: left 700ms ease-in;
+    transition: left 700ms ease-in;
+  }
+
+  #tool-menu ul li > ul {
+    position: absolute;
+    background-color: #333;
+    top: 0;
+    left: -60px;
+    min-width: 60px;
+    z-index: -1;
+    height: 100%;
+    -webkit-transition: left 450ms ease-in;
+    -moz-transition: left 450ms ease-in;
+    -ms-transition: left 450ms ease-in;
+    transition: left 450ms ease-in;
+  }
+
+  #tool-menu ul li > ul li a:hover {
+    background-color: #2e2e2e;
+  } */
