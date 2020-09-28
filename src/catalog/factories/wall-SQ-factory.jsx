@@ -1,5 +1,5 @@
 import React from 'react';
-import { buildWall, updatedWall } from './wall-factory-3d';
+import { buildWall, updatedWall } from './wall-SQ-factory-3d';
 import * as SharedStyle from '../../shared-style';
 import * as Geometry from '../../utils/geometry';
 import Translator from '../../translator/translator';
@@ -11,9 +11,8 @@ const STYLE_LINE = { stroke: SharedStyle.LINE_MESH_COLOR.selected };
 // const STYLE_RECT_SELECTED = { ...STYLE_RECT, stroke: SharedStyle.LINE_MESH_COLOR.selected };
 
 
-
-const STYLE_RECT = { strokeWidth: 10, stroke: '#000', fill: '#000 ' };
-const STYLE_RECT_SELECTED = { ...STYLE_RECT, stroke: '#000', };
+const STYLE_SQ = { strokeWidth: 10, stroke: '#000', fill: 'none' };
+const STYLE_SQ_SELECTED = { ...STYLE_SQ, stroke: '#000' }
 
 
 let translator = new Translator();
@@ -54,15 +53,56 @@ export default function WallFactory(name, info, textures) {
       let char_height = 11;
       let extra_epsilon = 5;
       let textDistance = half_thickness + epsilon + extra_epsilon;
+      let archPath = `M${0} ${-half_thickness}  A${length} ${length}  ${0} ${0}  ${0} ${length} ${0}  `;
+
+
+
+
+
+
+      console.log("archPath", archPath)
+
+
+      // if (archPath === "error") {
+      //   return (element.selected) ?
+      //     <g>
+      //       {/* <path id="arc1" fill="none" stroke="#446688" stroke-width="20" d={archPath}></path> */}
+      //       <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT_SELECTED} />
+      //       <line x1={length_5} y1={-half_thickness_eps} x2={length_5} y2={half_thickness_eps} style={STYLE_LINE} />
+      //       <text x={length_5} y={textDistance + char_height} style={STYLE_TEXT}>A</text>
+      //       <text x={length_5} y={-textDistance} style={STYLE_TEXT}>B</text>
+      //     </g> :
+      //     <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT} />
+
+      //   // <path id="arc1" fill="none" stroke="#446688" stroke-width="20" d="M 50 150 A 100 100 0 1 0 150 50"></path>
+      // } else {
+      //   return (element.selected) ?
+      //     <g>
+
+      //       <path id="arc1" fill="none" stroke="#446688" stroke-width="20" d={archPath}></path>
+      //       {/* <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT_SELECTED} /> */}
+      //       <line x1={length_5} y1={-half_thickness_eps} x2={length_5} y2={half_thickness_eps} style={STYLE_LINE} />
+      //       <text x={length_5} y={textDistance + char_height} style={STYLE_TEXT}>A</text>
+      //       <text x={length_5} y={-textDistance} style={STYLE_TEXT}>B</text>
+      //     </g> :
+      //     // <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT} />
+      //     <path id="arc1" fill="none" stroke="#446688" stroke-width="20" d={archPath}></path>
+      // }
+
+
 
       return (element.selected) ?
         <g>
-          <rect x="0" y={-half_thickness / 5} width={length} height={thickness / 5} style={STYLE_RECT_SELECTED} />
+
+          <path style={STYLE_SQ_SELECTED} d={archPath}></path>
+          {/* <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT_SELECTED} /> */}
           <line x1={length_5} y1={-half_thickness_eps} x2={length_5} y2={half_thickness_eps} style={STYLE_LINE} />
           <text x={length_5} y={textDistance + char_height} style={STYLE_TEXT}>A</text>
           <text x={length_5} y={-textDistance} style={STYLE_TEXT}>B</text>
         </g> :
-        <rect x="0" y={-half_thickness / 5} width={length} height={thickness / 5} style={STYLE_RECT_SELECTED} />
+        // id = "arc1" fill = "none" stroke = "#446688" stroke - width="20"
+        < path style={STYLE_SQ_SELECTED} d={archPath} ></path >
+
     },
 
     render3D: function (element, layer, scene) {

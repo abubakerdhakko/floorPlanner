@@ -2,11 +2,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
-const PAGE_TITLE = 'React Planner';
+const PAGE_TITLE = 'click Planner';
 const VENDORS_LIBRARIES = ['immutable', 'react', 'react-dom', 'react-redux', 'redux', 'three'];
 
 module.exports = (env, self) => {
-  let isProduction = self.hasOwnProperty('mode') ? ( self.mode === 'production' ) : true;
+  let isProduction = self.hasOwnProperty('mode') ? (self.mode === 'production') : true;
   let port = self.hasOwnProperty('port') ? self.port : 8080;
 
   if (isProduction) console.info('Webpack: Production mode'); else console.info('Webpack: Development mode');
@@ -88,11 +88,11 @@ module.exports = (env, self) => {
         cacheGroups: {
           default: false,
           commons: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendor',
-              chunks: 'all',
-              minSize: 10000,
-              reuseExistingChunk: true
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendor',
+            chunks: 'all',
+            minSize: 10000,
+            reuseExistingChunk: true
           }
         }
       }
