@@ -366,9 +366,11 @@ export default function Viewer2D(
         position: "relative",
       }}
     >
-      <div
+      {/* <div
         style={{ gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor }}
-      ></div>
+      >
+
+      </div>
       <div
         style={{
           gridRow: 1,
@@ -416,20 +418,20 @@ export default function Viewer2D(
             negativeUnitsNumber={0}
           />
         ) : null}
-      </div>
+      </div> */}
       <ReactSVGPanZoom
-        style={{ gridColumn: 2, gridRow: 2 }}
-        width={width - rulerSize}
-        height={height - rulerSize}
-        value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
-        onChangeValue={onChangeValue}
-        tool={mode2Tool(mode)}
-        onChangeTool={onChangeTool}
-        detectAutoPan={mode2DetectAutopan(mode)}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={onMouseUp}
-        miniaturePosition="none"
+        // style={{ gridColumn: 2, gridRow: 2 }}
+        width={width}
+        height={height}
+        // value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
+        // onChangeValue={onChangeValue}
+        // // tool={mode2Tool(mode)}
+        // onChangeTool={onChangeTool}
+        // detectAutoPan={mode2DetectAutopan(mode)}
+        // onMouseDown={onMouseDown}
+        // onMouseMove={onMouseMove}
+        // onMouseUp={onMouseUp}
+        // miniaturePosition="none"
         toolbarPosition="none"
       >
         <svg width={scene.width} height={scene.height}>
@@ -441,7 +443,7 @@ export default function Viewer2D(
               height="4"
               fill="#FFF"
             >
-              <rect x="0" y="0" width="4" height="4" fill="#FFF" />
+              <rect x="0" y="0" width="4" height="4" fill="#FFF" className='pppp' />
               <path
                 d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2"
                 style={{ stroke: "#8E9BA2", strokeWidth: 1 }}

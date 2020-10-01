@@ -9,24 +9,24 @@ export default class Scene extends Component {
   }
 
   render() {
-    let {scene, catalog} = this.props;
-    let {height, layers} = scene;
+    let { scene, catalog } = this.props;
+    let { height, layers } = scene;
     let selectedLayer = layers.get(scene.selectedLayer);
 
     return (
-      <g>
-        <Grids scene={scene}/>
+      <g className="hhhh">
+        <Grids scene={scene} />
 
-        <g style={{pointerEvents: 'none'}}>
+        <g style={{ pointerEvents: 'none' }}>
           {
             layers
-            .entrySeq()
-            .filter(([layerID, layer]) => layerID !== scene.selectedLayer && layer.visible)
-            .map(([layerID, layer]) => <Layer key={layerID} layer={layer} scene={scene} catalog={catalog}/>)
+              .entrySeq()
+              .filter(([layerID, layer]) => layerID !== scene.selectedLayer && layer.visible)
+              .map(([layerID, layer]) => <Layer key={layerID} layer={layer} scene={scene} catalog={catalog} />)
           }
         </g>
 
-        <Layer key={selectedLayer.id} layer={selectedLayer} scene={scene} catalog={catalog}/>
+        <Layer key={selectedLayer.id} layer={selectedLayer} scene={scene} catalog={catalog} />
       </g>
     );
   }

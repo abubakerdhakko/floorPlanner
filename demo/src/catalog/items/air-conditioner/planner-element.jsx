@@ -1,6 +1,5 @@
 import * as Three from "three";
 import React from "react";
-import { Resizable, ResizableBox } from 'react-resizable';
 
 const WIDTH = 90;
 const DEPTH = 40;

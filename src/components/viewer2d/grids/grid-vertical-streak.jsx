@@ -20,7 +20,7 @@ export default function GridVerticalStreak({width, height, grid}) {
     rendered.push(<line key={x} x1={x} y1="0" x2={x} y2={height} strokeWidth="1" stroke={color}/>);
   }
 
-  return (<g>{rendered}</g>);
+  return (<g >{rendered}</g>);
 }
 
 GridVerticalStreak.propTypes = {
