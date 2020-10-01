@@ -1,5 +1,7 @@
 import * as Three from "three";
 import React from "react";
+import Moveable from "react-moveable";
+
 
 const WIDTH = 90;
 const DEPTH = 40;
@@ -311,8 +313,6 @@ export default {
       },
     },
   },
-
-
 
 
   render2D: function (element, layer, scene) {
