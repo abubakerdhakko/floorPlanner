@@ -39,7 +39,7 @@ var Scene = function (_Component) {
 
       return React.createElement(
         'g',
-        null,
+        { className: 'hhhh' },
         React.createElement(Grids, { scene: scene }),
         React.createElement(
           'g',

@@ -31,7 +31,7 @@ export default function Grids(_ref) {
 
   return React.createElement(
     'g',
-    null,
+    { className: 'jjj' },
     renderedGrids
   );
 }

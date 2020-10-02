@@ -9,8 +9,12 @@ import Translator from '../../translator/translator';
 var epsilon = 20;
 var STYLE_TEXT = { textAnchor: 'middle' };
 var STYLE_LINE = { stroke: SharedStyle.LINE_MESH_COLOR.selected };
-var STYLE_RECT = { strokeWidth: 1, stroke: SharedStyle.LINE_MESH_COLOR.unselected, fill: 'url(#diagonalFill)' };
-var STYLE_RECT_SELECTED = _extends({}, STYLE_RECT, { stroke: SharedStyle.LINE_MESH_COLOR.selected });
+// const STYLE_RECT = { strokeWidth: 1, stroke: SharedStyle.LINE_MESH_COLOR.unselected, fill: 'url(#diagonalFill)' };
+// const STYLE_RECT_SELECTED = { ...STYLE_RECT, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+
+
+var STYLE_RECT = { strokeWidth: 10, stroke: '#000', fill: '#000 ' };
+var STYLE_RECT_SELECTED = _extends({}, STYLE_RECT, { stroke: '#000' });
 
 var translator = new Translator();
 
@@ -59,7 +63,7 @@ export default function WallFactory(name, info, textures) {
       return element.selected ? React.createElement(
         'g',
         null,
-        React.createElement('rect', { x: '0', y: -half_thickness, width: length, height: thickness, style: STYLE_RECT_SELECTED }),
+        React.createElement('rect', { x: '0', y: -half_thickness / 5, width: length, height: thickness / 5, style: STYLE_RECT_SELECTED }),
         React.createElement('line', { x1: length_5, y1: -half_thickness_eps, x2: length_5, y2: half_thickness_eps, style: STYLE_LINE }),
         React.createElement(
           'text',
@@ -71,7 +75,7 @@ export default function WallFactory(name, info, textures) {
           { x: length_5, y: -textDistance, style: STYLE_TEXT },
           'B'
         )
-      ) : React.createElement('rect', { x: '0', y: -half_thickness, width: length, height: thickness, style: STYLE_RECT });
+      ) : React.createElement('rect', { x: '0', y: -half_thickness / 5, width: length, height: thickness / 5, style: STYLE_RECT_SELECTED });
     },
 
     render3D: function render3D(element, layer, scene) {

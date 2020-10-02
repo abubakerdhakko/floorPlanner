@@ -28,7 +28,6 @@ export default function Item({ layer, item, scene, catalog }) {
 
   return (
 
-
     <g
       data-element-root
       data-prototype={item.prototype}

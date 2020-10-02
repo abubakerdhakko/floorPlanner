@@ -10,31 +10,39 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
-import Translator from './translator/translator';
-import Catalog from './catalog/catalog';
-import actions from './actions/export';
-import { objectsMap } from './utils/objects-utils';
-import { ToolbarComponents, Content, SidebarComponents, FooterBarComponents } from './components/export';
-import { VERSION } from './version';
-import './styles/export';
+import Translator from "./translator/translator";
+import Catalog from "./catalog/catalog";
+import actions from "./actions/export";
+import { objectsMap } from "./utils/objects-utils";
+import { ToolbarComponents, Content, SidebarComponents, FooterBarComponents } from "./components/export";
+import { VERSION } from "./version";
+import "./styles/export";
+
+import CatalogList from "./components/catalog-view/catalog-list";
 
 var Toolbar = ToolbarComponents.Toolbar;
 var Sidebar = SidebarComponents.Sidebar;
 var FooterBar = FooterBarComponents.FooterBar;
 
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import Draggable, { DraggableCore } from "react-draggable"; // Both at the same time
 
-var toolbarW = 50;
-var sidebarW = 300;
+// import "./RightClick.scss";
+
+var catalogW = 90;
+var toolbarW = 0;
+var sidebarW = 220;
 var footerBarH = 20;
 
 var wrapperStyle = {
-  display: 'flex',
-  flexFlow: 'row nowrap'
+  display: "flex",
+  flexFlow: "row nowrap",
+  position: "fixed"
 };
 
 var ReactPlanner = function (_Component) {
@@ -47,7 +55,7 @@ var ReactPlanner = function (_Component) {
   }
 
   _createClass(ReactPlanner, [{
-    key: 'getChildContext',
+    key: "getChildContext",
     value: function getChildContext() {
       var _this2 = this;
 
@@ -59,7 +67,7 @@ var ReactPlanner = function (_Component) {
       });
     }
   }, {
-    key: 'componentWillMount',
+    key: "componentWillMount",
     value: function componentWillMount() {
       var store = this.context.store;
       var _props = this.props,
@@ -74,7 +82,7 @@ var ReactPlanner = function (_Component) {
       projectActions.initCatalog(catalog);
     }
   }, {
-    key: 'componentWillReceiveProps',
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       var stateExtractor = nextProps.stateExtractor,
           state = nextProps.state,
@@ -82,37 +90,82 @@ var ReactPlanner = function (_Component) {
           catalog = nextProps.catalog;
 
       var plannerState = stateExtractor(state);
-      var catalogReady = plannerState.getIn(['catalog', 'ready']);
+      var catalogReady = plannerState.getIn(["catalog", "ready"]);
       if (!catalogReady) {
         projectActions.initCatalog(catalog);
       }
     }
   }, {
-    key: 'render',
+    key: "handleClick",
+    value: function handleClick(e, data) {
+      alert("Clicked on menu " + data.item);
+    }
+  }, {
+    key: "render",
     value: function render() {
       var _props2 = this.props,
           width = _props2.width,
           height = _props2.height,
           state = _props2.state,
           stateExtractor = _props2.stateExtractor,
-          props = _objectWithoutProperties(_props2, ['width', 'height', 'state', 'stateExtractor']);
+          props = _objectWithoutProperties(_props2, ["width", "height", "state", "stateExtractor"]);
 
-      var contentW = width - toolbarW - sidebarW;
+      var contentW = width;
+      // let catalogW = width - toolbarW - sidebarW;
       var toolbarH = height - footerBarH;
       var contentH = height - footerBarH;
-      var sidebarH = height - footerBarH;
+      var sidebarH = height;
 
       var extractedState = stateExtractor(state);
 
-      return React.createElement(
-        'div',
-        { style: _extends({}, wrapperStyle, { height: height }) },
-        React.createElement(Toolbar, _extends({ width: toolbarW, height: toolbarH, state: extractedState }, props)),
-        React.createElement(Content, _extends({ width: contentW, height: contentH, state: extractedState }, props, { onWheel: function onWheel(event) {
-            return event.preventDefault();
-          } })),
-        React.createElement(Sidebar, _extends({ width: sidebarW, height: sidebarH, state: extractedState }, props)),
-        React.createElement(FooterBar, _extends({ width: width, height: footerBarH, state: extractedState }, props))
+      return (
+        // <ContextMenuTrigger id="add_same_id">
+        React.createElement(
+          "div",
+          { className: "bg" },
+          React.createElement(Toolbar
+          // width={toolbarW}
+          // height={toolbarH}
+          , _extends({ state: extractedState
+          }, props)),
+          React.createElement(
+            "div",
+            { style: _extends({}, wrapperStyle, { height: height }) },
+            React.createElement(
+              Draggable,
+              { handle: ".handle" },
+              React.createElement(
+                "div",
+                null,
+                React.createElement(
+                  "div",
+                  { className: "handle handle-drag" },
+                  React.createElement("i", { className: "fas fa-grip-horizontal handle-drag-icon" })
+                ),
+                React.createElement(
+                  "div",
+                  null,
+                  React.createElement(CatalogList, {
+                    state: extractedState,
+                    width: catalogW,
+                    height: sidebarH
+                  })
+                )
+              )
+            ),
+            React.createElement(Content, _extends({
+              width: contentW,
+              height: contentH,
+              state: extractedState
+            }, props, {
+              onWheel: function onWheel(event) {
+                return event.preventDefault();
+              }
+            }))
+          )
+        )
+        // </ContextMenuTrigger>
+
       );
     }
   }]);
@@ -153,7 +206,7 @@ ReactPlanner.defaultProps = {
   catalog: new Catalog(),
   plugins: [],
   allowProjectFileSupport: true,
-  softwareSignature: 'React-Planner ' + VERSION,
+  softwareSignature: "React-Planner " + VERSION,
   toolbarButtons: [],
   sidebarComponents: [],
   footerbarComponents: [],

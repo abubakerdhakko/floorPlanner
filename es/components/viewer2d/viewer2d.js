@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { ReactSVGPanZoom, TOOL_NONE, TOOL_PAN, TOOL_ZOOM_IN, TOOL_ZOOM_OUT, TOOL_AUTO } from 'react-svg-pan-zoom';
-import * as constants from '../../constants';
-import State from './state';
-import * as SharedStyle from '../../shared-style';
-import { RulerX, RulerY } from './export';
+import { ReactSVGPanZoom, TOOL_NONE, TOOL_PAN, TOOL_ZOOM_IN, TOOL_ZOOM_OUT, TOOL_AUTO } from "react-svg-pan-zoom";
+import * as constants from "../../constants";
+import State from "./state";
+import * as SharedStyle from "../../shared-style";
+import { RulerX, RulerY } from "./export";
 
 function mode2Tool(mode) {
   switch (mode) {
@@ -31,7 +31,7 @@ function mode2PointerEvents(mode) {
     case constants.MODE_DRAGGING_ITEM:
     case constants.MODE_DRAGGING_LINE:
     case constants.MODE_DRAGGING_VERTEX:
-      return { pointerEvents: 'none' };
+      return { pointerEvents: "none" };
 
     default:
       return {};
@@ -44,16 +44,16 @@ function mode2Cursor(mode) {
     case constants.MODE_DRAGGING_LINE:
     case constants.MODE_DRAGGING_VERTEX:
     case constants.MODE_DRAGGING_ITEM:
-      return { cursor: 'move' };
+      return { cursor: "move" };
 
     case constants.MODE_ROTATING_ITEM:
-      return { cursor: 'ew-resize' };
+      return { cursor: "ew-resize" };
 
     case constants.MODE_WAITING_DRAWING_LINE:
     case constants.MODE_DRAWING_LINE:
-      return { cursor: 'crosshair' };
+      return { cursor: "crosshair" };
     default:
-      return { cursor: 'default' };
+      return { cursor: "default" };
   }
 }
 
@@ -74,17 +74,17 @@ function mode2DetectAutopan(mode) {
 }
 
 function extractElementData(node) {
-  while (!node.attributes.getNamedItem('data-element-root') && node.tagName !== 'svg') {
+  while (!node.attributes.getNamedItem("data-element-root") && node.tagName !== "svg") {
     node = node.parentNode;
   }
-  if (node.tagName === 'svg') return null;
+  if (node.tagName === "svg") return null;
 
   return {
-    part: node.attributes.getNamedItem('data-part') ? node.attributes.getNamedItem('data-part').value : undefined,
-    layer: node.attributes.getNamedItem('data-layer').value,
-    prototype: node.attributes.getNamedItem('data-prototype').value,
-    selected: node.attributes.getNamedItem('data-selected').value === 'true',
-    id: node.attributes.getNamedItem('data-id').value
+    part: node.attributes.getNamedItem("data-part") ? node.attributes.getNamedItem("data-part").value : undefined,
+    layer: node.attributes.getNamedItem("data-layer").value,
+    prototype: node.attributes.getNamedItem("data-prototype").value,
+    selected: node.attributes.getNamedItem("data-selected").value === "true",
+    id: node.attributes.getNamedItem("data-id").value
   };
 }
 
@@ -115,9 +115,8 @@ export default function Viewer2D(_ref, _ref2) {
   };
 
   var onMouseMove = function onMouseMove(viewerEvent) {
-
     //workaround that allow imageful component to work
-    var evt = new Event('mousemove-planner-event');
+    var evt = new Event("mousemove-planner-event");
     evt.viewerEvent = viewerEvent;
     document.dispatchEvent(evt);
 
@@ -168,7 +167,7 @@ export default function Viewer2D(_ref, _ref2) {
     var event = viewerEvent.originalEvent;
 
     //workaround that allow imageful component to work
-    var evt = new Event('mousedown-planner-event');
+    var evt = new Event("mousedown-planner-event");
     evt.viewerEvent = viewerEvent;
     document.dispatchEvent(evt);
 
@@ -181,19 +180,19 @@ export default function Viewer2D(_ref, _ref2) {
       if (!elementData || !elementData.selected) return;
 
       switch (elementData.prototype) {
-        case 'lines':
+        case "lines":
           linesActions.beginDraggingLine(elementData.layer, elementData.id, x, y, state.snapMask);
           break;
 
-        case 'vertices':
+        case "vertices":
           verticesActions.beginDraggingVertex(elementData.layer, elementData.id, x, y, state.snapMask);
           break;
 
-        case 'items':
-          if (elementData.part === 'rotation-anchor') itemsActions.beginRotatingItem(elementData.layer, elementData.id, x, y);else itemsActions.beginDraggingItem(elementData.layer, elementData.id, x, y);
+        case "items":
+          if (elementData.part === "rotation-anchor") itemsActions.beginRotatingItem(elementData.layer, elementData.id, x, y);else itemsActions.beginDraggingItem(elementData.layer, elementData.id, x, y);
           break;
 
-        case 'holes':
+        case "holes":
           holesActions.beginDraggingHole(elementData.layer, elementData.id, x, y);
           break;
 
@@ -207,7 +206,7 @@ export default function Viewer2D(_ref, _ref2) {
   var onMouseUp = function onMouseUp(viewerEvent) {
     var event = viewerEvent.originalEvent;
 
-    var evt = new Event('mouseup-planner-event');
+    var evt = new Event("mouseup-planner-event");
     evt.viewerEvent = viewerEvent;
     document.dispatchEvent(evt);
 
@@ -216,30 +215,29 @@ export default function Viewer2D(_ref, _ref2) {
         y = _mapCursorPosition3.y;
 
     switch (mode) {
-
       case constants.MODE_IDLE:
         var elementData = extractElementData(event.target);
 
         if (elementData && elementData.selected) return;
 
-        switch (elementData ? elementData.prototype : 'none') {
-          case 'areas':
+        switch (elementData ? elementData.prototype : "none") {
+          case "areas":
             areaActions.selectArea(elementData.layer, elementData.id);
             break;
 
-          case 'lines':
+          case "lines":
             linesActions.selectLine(elementData.layer, elementData.id);
             break;
 
-          case 'holes':
+          case "holes":
             holesActions.selectHole(elementData.layer, elementData.id);
             break;
 
-          case 'items':
+          case "items":
             itemsActions.selectItem(elementData.layer, elementData.id);
             break;
 
-          case 'none':
+          case "none":
             projectActions.unselectAll();
             break;
         }
@@ -311,7 +309,7 @@ export default function Viewer2D(_ref, _ref2) {
     }
   };
 
-  var _state$get$toJS = state.get('viewer2D').toJS(),
+  var _state$get$toJS = state.get("viewer2D").toJS(),
       e = _state$get$toJS.e,
       f = _state$get$toJS.f,
       SVGWidth = _state$get$toJS.SVGWidth,
@@ -322,32 +320,44 @@ export default function Viewer2D(_ref, _ref2) {
   var rulerBgColor = SharedStyle.PRIMARY_COLOR.main;
   var rulerFnColor = SharedStyle.COLORS.white;
   var rulerMkColor = SharedStyle.SECONDARY_COLOR.main;
-  var sceneWidth = SVGWidth || state.getIn(['scene', 'width']);
-  var sceneHeight = SVGHeight || state.getIn(['scene', 'height']);
+  var sceneWidth = SVGWidth || state.getIn(["scene", "width"]);
+  var sceneHeight = SVGHeight || state.getIn(["scene", "height"]);
   var sceneZoom = state.zoom || 1;
   var rulerXElements = Math.ceil(sceneWidth / rulerUnitPixelSize) + 1;
   var rulerYElements = Math.ceil(sceneHeight / rulerUnitPixelSize) + 1;
 
   return React.createElement(
-    'div',
-    { style: {
+    "div",
+    {
+      style: {
         margin: 0,
         padding: 0,
-        display: 'grid',
-        gridRowGap: '0',
-        gridColumnGap: '0',
-        gridTemplateColumns: rulerSize + 'px ' + (width - rulerSize) + 'px',
-        gridTemplateRows: rulerSize + 'px ' + (height - rulerSize) + 'px',
-        position: 'relative'
-      } },
-    React.createElement('div', { style: { gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor } }),
+        display: "grid",
+        gridRowGap: "0",
+        gridColumnGap: "0",
+        gridTemplateColumns: rulerSize + "px " + (width - rulerSize) + "px",
+        gridTemplateRows: rulerSize + "px " + (height - rulerSize) + "px",
+        position: "relative"
+      }
+    },
+    React.createElement("div", {
+      style: { gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor }
+    }),
     React.createElement(
-      'div',
-      { style: { gridRow: 1, gridColumn: 2, position: 'relative', overflow: 'hidden' }, id: 'rulerX' },
+      "div",
+      {
+        style: {
+          gridRow: 1,
+          gridColumn: 2,
+          position: "relative",
+          overflow: "hidden"
+        },
+        id: "rulerX"
+      },
       sceneWidth ? React.createElement(RulerX, {
         unitPixelSize: rulerUnitPixelSize,
         zoom: sceneZoom,
-        mouseX: state.mouse.get('x'),
+        mouseX: state.mouse.get("x"),
         width: width - rulerSize,
         zeroLeftPosition: e || 0,
         backgroundColor: rulerBgColor,
@@ -358,12 +368,20 @@ export default function Viewer2D(_ref, _ref2) {
       }) : null
     ),
     React.createElement(
-      'div',
-      { style: { gridColumn: 1, gridRow: 2, position: 'relative', overflow: 'hidden' }, id: 'rulerY' },
+      "div",
+      {
+        style: {
+          gridColumn: 1,
+          gridRow: 2,
+          position: "relative",
+          overflow: "hidden"
+        },
+        id: "rulerY"
+      },
       sceneHeight ? React.createElement(RulerY, {
         unitPixelSize: rulerUnitPixelSize,
         zoom: sceneZoom,
-        mouseY: state.mouse.get('y'),
+        mouseY: state.mouse.get("y"),
         height: height - rulerSize,
         zeroTopPosition: sceneHeight * sceneZoom + f || 0,
         backgroundColor: rulerBgColor,
@@ -380,31 +398,40 @@ export default function Viewer2D(_ref, _ref2) {
         width: width - rulerSize,
         height: height - rulerSize,
         value: viewer2D.isEmpty() ? null : viewer2D.toJS(),
-        onChangeValue: onChangeValue,
-        tool: mode2Tool(mode),
-        onChangeTool: onChangeTool,
+        onChangeValue: onChangeValue
+        // tool={mode2Tool(mode)}
+        , onChangeTool: onChangeTool,
         detectAutoPan: mode2DetectAutopan(mode),
         onMouseDown: onMouseDown,
         onMouseMove: onMouseMove,
         onMouseUp: onMouseUp,
-        miniaturePosition: 'none',
-        toolbarPosition: 'none'
+        miniaturePosition: "none",
+        toolbarPosition: "none"
       },
       React.createElement(
-        'svg',
+        "svg",
         { width: scene.width, height: scene.height },
         React.createElement(
-          'defs',
+          "defs",
           null,
           React.createElement(
-            'pattern',
-            { id: 'diagonalFill', patternUnits: 'userSpaceOnUse', width: '4', height: '4', fill: '#FFF' },
-            React.createElement('rect', { x: '0', y: '0', width: '4', height: '4', fill: '#FFF' }),
-            React.createElement('path', { d: 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2', style: { stroke: '#8E9BA2', strokeWidth: 1 } })
+            "pattern",
+            {
+              id: "diagonalFill",
+              patternUnits: "userSpaceOnUse",
+              width: "4",
+              height: "4",
+              fill: "#FFF"
+            },
+            React.createElement("rect", { x: "0", y: "0", width: "4", height: "4", fill: "#FFF", className: "pppp" }),
+            React.createElement("path", {
+              d: "M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2",
+              style: { stroke: "#8E9BA2", strokeWidth: 1 }
+            })
           )
         ),
         React.createElement(
-          'g',
+          "g",
           { style: Object.assign(mode2Cursor(mode), mode2PointerEvents(mode)) },
           React.createElement(State, { state: state, catalog: catalog })
         )

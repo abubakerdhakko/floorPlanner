@@ -1,7 +1,8 @@
 // COLORS
 export var COLORS = {
   white: '#FFF',
-  black: '#000'
+  black: '#000',
+  bgGraph: '#dddddd'
 };
 
 export var MATERIAL_COLORS = {

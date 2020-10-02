@@ -12,37 +12,35 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { FaPlusCircle as IconAdd } from 'react-icons/fa';
-import * as SharedStyle from '../../shared-style';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { FaPlusCircle as IconAdd } from "react-icons/fa";
+import * as SharedStyle from "../../shared-style";
 
 var STYLE_BOX = {
-  width: '14em',
-  height: '14em',
-  padding: '0.625em',
-  background: '#f7f7f9',
-  border: '1px solid #e1e1e8',
-  cursor: 'pointer',
-  position: 'relative',
-  boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
-  borderRadius: '2px',
-  transition: 'all .15s ease-in-out',
-  WebkitTransition: 'all .15s ease-in-out',
-  alignSelf: 'center',
-  justifySelf: 'center'
+  width: "4em",
+  height: "4em",
+  padding: "0.625em",
+  // background: '#f7f7f9',
+  // border: '1px solid #e1e1e8',
+  cursor: "pointer",
+  position: "relative",
+  // boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
+  // borderRadius: '2px',
+  // transition: 'all .15s ease-in-out',
+  // WebkitTransition: 'all .15s ease-in-out',
+  alignSelf: "center",
+  justifySelf: "center"
 };
 
-var STYLE_BOX_HOVER = _extends({}, STYLE_BOX, {
-  background: SharedStyle.SECONDARY_COLOR.main
-});
+var STYLE_BOX_HOVER = _extends({}, STYLE_BOX);
 
 var STYLE_TITLE = {
-  width: '100%',
-  textAlign: 'center',
-  display: 'block',
-  marginBottom: '.5em',
-  textTransform: 'capitalize'
+  width: "100%",
+  textAlign: "center",
+  display: "block",
+  marginBottom: ".5em",
+  textTransform: "capitalize"
 };
 
 var STYLE_TITLE_HOVER = _extends({}, STYLE_TITLE, {
@@ -50,59 +48,57 @@ var STYLE_TITLE_HOVER = _extends({}, STYLE_TITLE, {
 });
 
 var STYLE_IMAGE_CONTAINER = {
-  width: '100%',
-  height: '8em',
-  position: 'relative',
-  overflow: 'hidden',
-  border: 'solid 1px #e6e6e6',
+  width: "100%",
+  height: "4em",
+  position: "relative",
+  overflow: "hidden",
+  // border: "solid 1px #e6e6e6",
   padding: 0,
   margin: 0,
-  marginBottom: '5px'
+  marginBottom: "5px"
 };
 
 var STYLE_IMAGE = {
-  position: 'absolute',
-  background: '#222',
-  width: '100%',
-  height: '100%',
-  backgroundSize: 'contain',
-  backgroundPosition: '50% 50%',
+  position: "absolute",
+  background: "#222",
+  width: "100%",
+  height: "100%",
+  backgroundSize: "contain",
+  backgroundPosition: "50% 50%",
   backgroundColor: SharedStyle.COLORS.white,
-  backgroundRepeat: 'no-repeat',
-  transition: 'all .2s ease-in-out'
+  backgroundRepeat: "no-repeat",
+  transition: "all .2s ease-in-out"
 };
 
-var STYLE_IMAGE_HOVER = _extends({}, STYLE_IMAGE, {
-  transform: 'scale(1.2)'
-});
+var STYLE_IMAGE_HOVER = _extends({}, STYLE_IMAGE);
 
 var STYLE_PLUS_HOVER = {
-  marginTop: '1.5em',
+  marginTop: "1.5em",
   color: SharedStyle.SECONDARY_COLOR.main,
-  fontSize: '2em',
-  opacity: '0.7',
-  width: '100%'
+  fontSize: "2em",
+  opacity: "0.7",
+  width: "100%"
 };
 
 var STYLE_DESCRIPTION = (_STYLE_DESCRIPTION = {
-  display: 'block'
-}, _defineProperty(_STYLE_DESCRIPTION, 'display', '-webkit-box'), _defineProperty(_STYLE_DESCRIPTION, 'height', '2em'), _defineProperty(_STYLE_DESCRIPTION, 'margin', '0 auto'), _defineProperty(_STYLE_DESCRIPTION, 'fontSize', '0.75em'), _defineProperty(_STYLE_DESCRIPTION, 'fontStyle', 'italic'), _defineProperty(_STYLE_DESCRIPTION, 'lineHeight', '1em'), _defineProperty(_STYLE_DESCRIPTION, 'WebkitLineClamp', '2'), _defineProperty(_STYLE_DESCRIPTION, 'WebkitBoxOrient', 'vertical'), _defineProperty(_STYLE_DESCRIPTION, 'overflow', 'hidden'), _defineProperty(_STYLE_DESCRIPTION, 'textOverflow', 'ellipsis'), _STYLE_DESCRIPTION);
+  display: "block"
+}, _defineProperty(_STYLE_DESCRIPTION, "display", "-webkit-box"), _defineProperty(_STYLE_DESCRIPTION, "height", "2em"), _defineProperty(_STYLE_DESCRIPTION, "margin", "0 auto"), _defineProperty(_STYLE_DESCRIPTION, "fontSize", "0.75em"), _defineProperty(_STYLE_DESCRIPTION, "fontStyle", "italic"), _defineProperty(_STYLE_DESCRIPTION, "lineHeight", "1em"), _defineProperty(_STYLE_DESCRIPTION, "WebkitLineClamp", "2"), _defineProperty(_STYLE_DESCRIPTION, "WebkitBoxOrient", "vertical"), _defineProperty(_STYLE_DESCRIPTION, "overflow", "hidden"), _defineProperty(_STYLE_DESCRIPTION, "textOverflow", "ellipsis"), _STYLE_DESCRIPTION);
 
 var STYLE_TAGS = {
-  listStyle: 'none',
-  margin: '0px',
-  padding: '0px',
-  fontSize: '11px',
-  marginBottom: '3px'
+  listStyle: "none",
+  margin: "0px",
+  padding: "0px",
+  fontSize: "11px",
+  marginBottom: "3px"
 };
 
 var STYLE_TAG = {
-  display: 'inline-block',
-  background: '#337ab7',
+  display: "inline-block",
+  background: "#337ab7",
   color: SharedStyle.COLORS.white,
-  padding: '1px 4px',
-  marginRight: '3px',
-  borderRadius: '3px'
+  padding: "1px 4px",
+  marginRight: "3px",
+  borderRadius: "3px"
 };
 
 var CatalogItem = function (_Component) {
@@ -118,18 +114,18 @@ var CatalogItem = function (_Component) {
   }
 
   _createClass(CatalogItem, [{
-    key: 'select',
+    key: "select",
     value: function select() {
       var element = this.props.element;
 
       switch (element.prototype) {
-        case 'lines':
+        case "lines":
           this.context.linesActions.selectToolDrawingLine(element.name);
           break;
-        case 'items':
+        case "items":
           this.context.itemsActions.selectToolDrawingItem(element.name);
           break;
-        case 'holes':
+        case "holes":
           this.context.holesActions.selectToolDrawingHole(element.name);
           break;
       }
@@ -137,7 +133,7 @@ var CatalogItem = function (_Component) {
       this.context.projectActions.pushLastSelectedCatalogElementToHistory(element);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _this2 = this;
 
@@ -145,7 +141,7 @@ var CatalogItem = function (_Component) {
       var hover = this.state.hover;
 
       return React.createElement(
-        'div',
+        "div",
         {
           style: hover ? STYLE_BOX_HOVER : STYLE_BOX,
           onClick: function onClick(e) {
@@ -159,34 +155,13 @@ var CatalogItem = function (_Component) {
           }
         },
         React.createElement(
-          'b',
-          { style: !hover ? STYLE_TITLE : STYLE_TITLE_HOVER },
-          element.info.title
-        ),
-        React.createElement(
-          'div',
+          "div",
           { style: STYLE_IMAGE_CONTAINER },
-          React.createElement(
-            'div',
-            { style: _extends({}, !hover ? STYLE_IMAGE : STYLE_IMAGE_HOVER, { backgroundImage: 'url(' + element.info.image + ')' }) },
-            hover ? React.createElement(IconAdd, { style: STYLE_PLUS_HOVER }) : null
-          )
-        ),
-        React.createElement(
-          'ul',
-          { style: STYLE_TAGS },
-          element.info.tag.map(function (tag, index) {
-            return React.createElement(
-              'li',
-              { style: STYLE_TAG, key: index },
-              tag
-            );
+          React.createElement("div", {
+            style: _extends({}, !hover ? STYLE_IMAGE : STYLE_IMAGE_HOVER, {
+              backgroundImage: "url(" + element.info.image + ")"
+            })
           })
-        ),
-        React.createElement(
-          'div',
-          { style: STYLE_DESCRIPTION },
-          element.info.description
         )
       );
     }

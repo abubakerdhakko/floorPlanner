@@ -1,9 +1,14 @@
 import WallFactory from './wall-factory';
+import WallSQFactory from './wall-SQ-factory';
+
+import WallRectFactory from './wall-rect-factory';
 import AreaFactory from './area-factory';
 
-export { WallFactory, AreaFactory };
+export { WallFactory, WallSQFactory, WallRectFactory, AreaFactory };
 
 export default {
   WallFactory: WallFactory,
+  WallSQFactory: WallSQFactory,
+  WallRectFactory: WallRectFactory,
   AreaFactory: AreaFactory
 };

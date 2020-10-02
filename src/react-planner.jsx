@@ -77,52 +77,54 @@ class ReactPlanner extends Component {
     let extractedState = stateExtractor(state);
 
     return (
-      // <ContextMenuTrigger id="add_same_id">
-      <div className="bg">
-        {/* <ContextMenu className="menu" id="add_same_id">
+      <ContextMenuTrigger id="add_same_id">
+        <div className="bg">
+          <ContextMenu className="menu" id="add_same_id">
             <Sidebar
               width={sidebarW}
               height={sidebarH}
               state={extractedState}
               {...props}
             />
-          </ContextMenu> */}
+          </ContextMenu>
 
-        <Toolbar
-          // width={toolbarW}
-          // height={toolbarH}
-          state={extractedState}
-          {...props}
-        />
-        <div style={{ ...wrapperStyle, height }}>
-          <Draggable handle=".handle">
-            <div>
-              <div className="handle handle-drag">
-                <i className="fas fa-grip-horizontal handle-drag-icon"></i>
-              </div>
-              <div>
-                <CatalogList
-                  state={extractedState}
-                  width={catalogW}
-                  height={sidebarH}
-                />
-              </div>
-            </div>
-          </Draggable>
-          {/* <CatalogPage /> */}
-
-          <Content
-            width={contentW}
-            height={contentH}
+          <Toolbar
+            // width={toolbarW}
+            // height={toolbarH}
             state={extractedState}
             {...props}
-            onWheel={(event) => event.preventDefault()}
           />
 
-          {/* <FooterBar width={width} height={footerBarH} state={extractedState} {...props} /> */}
+
+          <div style={{ ...wrapperStyle, height }}>
+            <Draggable handle=".handle">
+              <div>
+                <div className="handle handle-drag">
+                  <i className="fas fa-grip-horizontal handle-drag-icon"></i>
+                </div>
+                <div>
+                  <CatalogList
+                    state={extractedState}
+                    width={catalogW}
+                    height={sidebarH}
+                  />
+                </div>
+              </div>
+            </Draggable>
+            {/* <CatalogPage /> */}
+
+            <Content
+              width={contentW}
+              height={contentH}
+              state={extractedState}
+              {...props}
+              onWheel={(event) => event.preventDefault()}
+            />
+
+            {/* <FooterBar width={width} height={footerBarH} state={extractedState} {...props} /> */}
+          </div>
         </div>
-      </div>
-      // </ContextMenuTrigger>
+      </ContextMenuTrigger>
     );
   }
 }

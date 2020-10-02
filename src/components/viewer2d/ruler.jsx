@@ -22,16 +22,18 @@ const STYLE_TEXT = {
 };
 
 
-export default function Ruler({length, unit, transform}) {
+export default function Ruler({ length, unit, transform }) {
 
-  let distanceText = `${length.toFixed(2)} ${unit}`;
+  // let distanceText = `${length.toFixed(2)} ${unit}`;
+  let cmToFtCvn = length / 30.48
+  let distanceText = `${cmToFtCvn.toFixed(2)} `;
 
   return (
     <g transform={transform}>
-      <text x={length / 2} y="-3" transform={`scale(1, -1)`} style={STYLE_TEXT}>{distanceText}</text>
-      <line x1="0" y1="-5" x2="0" y2="5" style={STYLE}/>
-      <line x1={length} y1="-5" x2={length} y2="5" style={STYLE}/>
-      <line x1="0" y1="0" x2={length} y2="0" style={STYLE}/>
+      <text x={length / 2} y="-3" transform={`scale(1, -1)`} style={STYLE_TEXT}>{distanceText}Ft</text>
+      <line x1="0" y1="-5" x2="0" y2="5" style={STYLE} />
+      <line x1={length} y1="-5" x2={length} y2="5" style={STYLE} />
+      <line x1="0" y1="0" x2={length} y2="0" style={STYLE} />
     </g>
   );
 

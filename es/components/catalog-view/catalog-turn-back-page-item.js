@@ -8,24 +8,24 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { MdNavigateBefore } from 'react-icons/md';
-import * as SharedStyle from '../../shared-style';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { MdNavigateBefore } from "react-icons/md";
+import * as SharedStyle from "../../shared-style";
 
 var STYLE_BOX = {
-  width: '14em',
-  height: '14em',
-  padding: '0.625em',
-  background: '#f7f7f9',
-  border: '1px solid #e1e1e8',
-  margin: '0.3em',
-  cursor: 'pointer',
-  position: 'relative',
-  boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
-  borderRadius: '2px',
-  transition: 'all .2s ease-in-out',
-  WebkitTransition: 'all .2s ease-in-out'
+  width: "4em",
+  height: "4em",
+  padding: "0.625em",
+  background: "#f7f7f9",
+  border: "1px solid #e1e1e8",
+  margin: "0.3em",
+  cursor: "pointer",
+  position: "relative",
+  boxShadow: "0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)",
+  borderRadius: "2px",
+  transition: "all .2s ease-in-out",
+  WebkitTransition: "all .2s ease-in-out"
 };
 
 var STYLE_BOX_HOVER = _extends({}, STYLE_BOX, {
@@ -33,10 +33,10 @@ var STYLE_BOX_HOVER = _extends({}, STYLE_BOX, {
 });
 
 var STYLE_BACK = {
-  position: 'absolute',
+  position: "absolute",
   color: SharedStyle.COLORS.black,
-  fontSize: '5em',
-  width: '100%'
+  fontSize: "5em",
+  width: "100%"
 };
 
 var STYLE_BACK_HOVER = _extends({}, STYLE_BACK, {
@@ -45,13 +45,13 @@ var STYLE_BACK_HOVER = _extends({}, STYLE_BACK, {
 
 var CONTAINER_DIV = {
   background: SharedStyle.COLORS.white,
-  marginBottom: '5px',
-  border: 'solid 1px #e6e6e6',
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
+  marginBottom: "5px",
+  border: "solid 1px #e6e6e6",
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
 };
 
 var CatalogTurnBackPageItem = function (_Component) {
@@ -67,12 +67,12 @@ var CatalogTurnBackPageItem = function (_Component) {
   }
 
   _createClass(CatalogTurnBackPageItem, [{
-    key: 'changePage',
+    key: "changePage",
     value: function changePage(newPage) {
       this.context.projectActions.goBackToCatalogPage(newPage);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _this2 = this;
 
@@ -80,7 +80,7 @@ var CatalogTurnBackPageItem = function (_Component) {
       var hover = this.state.hover;
 
       return React.createElement(
-        'div',
+        "div",
         {
           style: hover ? STYLE_BOX_HOVER : STYLE_BOX,
           onClick: function onClick(e) {
@@ -94,7 +94,7 @@ var CatalogTurnBackPageItem = function (_Component) {
           }
         },
         React.createElement(
-          'div',
+          "div",
           { style: CONTAINER_DIV },
           React.createElement(MdNavigateBefore, { style: !hover ? STYLE_BACK : STYLE_BACK_HOVER })
         )

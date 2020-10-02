@@ -28,7 +28,7 @@ export default function State(_ref) {
   return React.createElement(
     'g',
     null,
-    React.createElement('rect', { x: '0', y: '0', width: width, height: height, fill: SharedStyle.COLORS.white }),
+    React.createElement('rect', { x: '0', y: '0', width: width, height: height, fill: SharedStyle.COLORS.bgGraph }),
     React.createElement(
       'g',
       { transform: 'translate(0, ' + scene.height + ') scale(1, -1)', id: 'svg-drawing-paper' },
